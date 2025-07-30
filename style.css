@@ -8,5 +8,11 @@
             height: 25px;
             width: 25px;
         }
+        .flagged{
+            background-color: gray;
+        }
+        .revealed{
+            background-color: green;
+        }
     }
 }

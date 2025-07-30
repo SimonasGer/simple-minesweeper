@@ -6,8 +6,7 @@ for (let i = allSquares.length - 1; i > 0; i--) {
 }
 
 let allMines = allSquares.slice(0, mines);
-console.log(allMines);
 
 allMines.forEach(cell => {
     cell.setAttribute("isMine", "true");
-})
+});
