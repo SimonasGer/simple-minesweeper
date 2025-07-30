@@ -1,13 +1,13 @@
 const allSquares = [...document.getElementsByTagName("td")];
-let shuffledSquares = [];
-
-function shuffle(allSquares) {
-    if (allSquares.length === 0) return;
-    let randomIndex = Math.floor(Math.random() * allSquares.length);
-    shuffledSquares.push(allSquares[randomIndex]);
-    allSquares.splice(randomIndex, 1);
-    shuffle(allSquares);
+let mines = 5; //will be user input
+for (let i = allSquares.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [allSquares[i], allSquares[j]] = [allSquares[j], allSquares[i]];
 }
 
-shuffle(allSquares);
-console.log(shuffledSquares);
+let allMines = allSquares.slice(0, mines);
+console.log(allMines);
+
+allMines.forEach(cell => {
+    cell.setAttribute("isMine", "true");
+})

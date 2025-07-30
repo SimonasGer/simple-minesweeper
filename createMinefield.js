@@ -1,6 +1,6 @@
 const minefield = document.getElementById("minefield");
-const rows = 5;
-const columns = 5;
+const rows = 10;
+const columns = 10;
 
 for (let i = 0; i < rows; i++) {
     const row = document.createElement("tr");  
