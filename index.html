@@ -8,6 +8,15 @@
 </head>
 <body>
     <h1>Minesweeper</h1>
+    <form id="form">
+        <fieldset>
+            <input for="form" type="number" name="width" id="width" placeholder="Field Width" required>
+            <input for="form" type="number" name="height" id="height" placeholder="Field Height" required>
+            <input for="form" type="number" name="mines" id="mines" placeholder="Mine Count" required>
+            <button type="submit">Create Minefield</button>
+            <p id="error"></p>
+        </fieldset>
+    </form>
     <section>
         <h2>Scores</h2>
         <ol>
@@ -23,8 +32,11 @@
             
         </table>
     </section>
-    <script src="createMinefield.js"></script>
-    <script src="populateMines.js"></script>
-    <script src="revealingAndFlagging.js"></script>
+    <section>
+        <p id="flags"></p>
+        
+    </section>
+    <script type="module" src="createMinefield.js"></script>
+    <script type="module" src="revealingAndFlagging.js"></script>
 </body>
 </html>

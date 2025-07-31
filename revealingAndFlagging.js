@@ -1,7 +1,6 @@
 const cells = document.getElementsByTagName("td");
 
 const toggleFlag = (cell) => {
-    console.log("flagged");
     cell.classList.add("flagged");
     cell.innerHTML = "&#128681";
 }
@@ -51,18 +50,21 @@ const revealCell = (cell) => {
 
 }
 
-for (let cell of cells) {
-    cell.addEventListener("contextmenu", () => {
-        // right click
-        toggleFlag(cell);
-    });
 
-    cell.addEventListener("click", () => {
-        console.log("left click")
-        // left click
-        revealCell(cell);
-    });
-    cell.addEventListener("contextmenu", (e) => {
-        e.preventDefault(); // Disable right-click menu
-    });
+export const game = () => {
+    for (let cell of cells) {
+        cell.addEventListener("contextmenu", () => {
+            // right click
+            toggleFlag(cell);
+        });
+
+        cell.addEventListener("click", () => {
+            console.log("left click")
+            // left click
+            revealCell(cell);
+        });
+        cell.addEventListener("contextmenu", (e) => {
+            e.preventDefault(); // Disable right-click menu
+        });
+    }
 }
