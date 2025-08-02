@@ -13,30 +13,34 @@
             <input for="form" type="number" name="width" id="width" placeholder="Field Width" required>
             <input for="form" type="number" name="height" id="height" placeholder="Field Height" required>
             <input for="form" type="number" name="mines" id="mines" placeholder="Mine Count" required>
-            <button type="submit">Create Minefield</button>
+            <button id="create" type="submit">Create Minefield</button>
             <p id="error"></p>
         </fieldset>
     </form>
     <section>
         <h2>Scores</h2>
-        <ol>
-            <li>sample score here</li>
-            <li>sample score here</li>
-            <li>sample score here</li>
-            <li>sample score here</li>
-            <li>sample score here</li>
+        <ol id="list">
+
         </ol>
     </section>
     <section class="game">
         <table id="minefield">
-            
+            <!--rows and columns are dynamically generated-->
         </table>
     </section>
     <section>
-        <p id="flags"></p>
-        
+        <p id="flags"></p> <!--Empty until minefield exists-->
     </section>
+    <dialog id="dialog">
+        <form id="save">
+            <fieldset>
+                <input for="save" type="text" name="user" id="user" placeholder="Enter your name" required>
+                <Button>Save</Button>
+            </fieldset>
+        </form>
+    </dialog>
     <script type="module" src="createMinefield.js"></script>
     <script type="module" src="revealingAndFlagging.js"></script>
+    <script type="module" src="score.js"></script>
 </body>
 </html>

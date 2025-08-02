@@ -1,8 +1,33 @@
 const cells = document.getElementsByTagName("td");
 
+const win = () => {
+    if(document.getElementsByTagName("tr")) {
+        document.getElementById("flags").innerText = ""
+        document.getElementById("minefield").innerHTML = "";
+        document.getElementById("dialog").open = true;
+    }
+}
+
 const toggleFlag = (cell) => {
-    cell.classList.add("flagged");
-    cell.innerHTML = "&#128681";
+    if (cell.classList.contains("flagged")) {
+        cell.classList.remove("flagged");
+        cell.innerHTML = "";
+        localStorage.setItem("flags", parseInt(localStorage.getItem("flags")) + 1);
+        localStorage.setItem("squares", parseInt(localStorage.getItem("squares")) + 1);
+    } else {
+        if(parseInt(localStorage.getItem("flags")) === 0) {
+            alert("Ran out of flags");
+            return;
+        }
+        cell.classList.add("flagged");
+        cell.innerHTML = "&#128681";
+        localStorage.setItem("flags", parseInt(localStorage.getItem("flags")) - 1);
+        localStorage.setItem("squares", parseInt(localStorage.getItem("squares")) - 1);
+    }       
+    document.getElementById("flags").innerText = `Flags remaining: ${localStorage.getItem("flags")}` 
+    if (parseInt(localStorage.getItem("squares")) === 0){
+        win()
+    }
 }
 
 const chainReveal = (cell) => {
@@ -29,6 +54,10 @@ const chainReveal = (cell) => {
         }
     }
     cell.classList.add("revealed");
+    localStorage.setItem("squares", parseInt(localStorage.getItem("squares")) - 1);
+    if (parseInt(localStorage.getItem("squares")) === 0){
+        win();
+    }
     if (bombs > 0) {
         cell.innerText = `${bombs}`;
         return;
